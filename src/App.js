@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import NavBar from "./components/NavBar";
+import ItemCount from "./components/ItemCount";
+import LogoNavBar from "./components/LogoNavBar";
+import ItemListContainer from "./components/ItemListContainer";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  
+  const onAdd = (count) => {
+    alert(count);
+
+  }
+  
+  return (<div>
+
+      <NavBar />
+      <ItemListContainer  />
+      <LogoNavBar />
+      <ItemCount inicial ={1} maximo = {20} onAdd ={onAdd} />
+      
+  </div>
   );
 }
 
