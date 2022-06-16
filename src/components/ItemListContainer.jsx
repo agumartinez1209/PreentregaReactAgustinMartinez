@@ -2,27 +2,28 @@ import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 
 
-const ItemListContainer = ({onAdd}) => {
+function ItemListContainer ({categoria, onAdd }) {
  
  
   const[productos, setProductos] = useState([]) 
 
   useEffect( () => {
     setTimeout(()=>{
-      fetch("productos.json")
+      fetch("../../productos.json")
         .then (res => res.json ())
-        .then (body => {setProductos(body)})  
+        .then (data => {
+          setProductos(data)  })  
         .catch (error => console.error("error:", error))
     },2000)
 
 
-    },[])
+    },[categoria])
 
-  console.log(productos)
   
   return( 
     <>
-    <ItemList productos = {productos} onAdd={onAdd} />
+    
+    <ItemList productos = {productos} onAdd={onAdd} categoria={categoria}  />
     
     </>
   )

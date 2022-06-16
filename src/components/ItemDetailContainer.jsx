@@ -1,31 +1,27 @@
 
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
 
 
 function ItemDetailContainer() {
 
     const [itemDetail, setItemDetail] = useState ({})
+    const { id } =useParams()
     useEffect(() => {
 
-        setTimeout(() =>{
-            fetch("https://rickandmortyapi.com/api/character")
+            fetch("../../productos.json")
             .then (res => res.json ())
-            .then (res => setItemDetail(res.results))  
+            .then(productos => {setItemDetail(productos.find(producto => producto.id == id)) })
             .catch (error => console.error("error:", error))
-        },2000);
+            console.log(itemDetail)
 
-
-
-      
-
-    }, [])
+    }, [id]);
     
-    
-    console.log(itemDetail)
+  
   return (
     <>
-    <ItemDetail id= {itemDetail.id} name = {itemDetail.name} species = {itemDetail.species}  status = {itemDetail.status} />
+    <ItemDetail id = {itemDetail.id} texto = {itemDetail.texto} categoria = {itemDetail.categoria}  precio = {itemDetail.precio} imagen = {itemDetail.imagen} />
     </>
   )
 }

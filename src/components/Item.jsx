@@ -1,21 +1,22 @@
 import React from 'react'
 import { Button, Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
+function Item  ({productos}) {
 
-const Item = ({productos}) => {
-
-  const {precio, texto, imagen} = productos
+  const {precio, texto, imagen, id, categoria} = productos
   return (
     <Card className='text-center  mx-auto ' style={{ width: '15rem', margin: 20 }}>
   <Card.Img variant="top"  src={imagen}  />
   <Card.Body>
     <Card.Title> {texto} </Card.Title>
+    <Card.Title> {categoria} </Card.Title>
     <Card.Text>
       $ {precio}
       
     </Card.Text>
-    <Button variant="primary" >Ver Detalle</Button>
+    <Link to={"/Productos/" + id} ><Button variant="primary" >Ver Detalle</Button> </Link>
     
   </Card.Body>
 </Card>   
